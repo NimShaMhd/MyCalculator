@@ -265,12 +265,15 @@ public class Calculator implements ActionListener {
 		}else if(e.getSource()==buttonpoint) {
 			display.setText(display.getText()+".");
 		}
-		
 		else if(e.getSource()==buttonplus) {
 			isOpertorClicked=true;
 			isplus=true;
-			oldValue=display.getText();
-		}else if(e.getSource()==buttonminus) {
+			oldValue=display.getText();	
+		}
+		
+		
+		
+		else if(e.getSource()==buttonminus) {
 			isOpertorClicked=true;
 			isminus=true;
 			oldValue=display.getText();
@@ -285,23 +288,32 @@ public class Calculator implements ActionListener {
 			
 			
 		}else if(e.getSource()==buttonequal) {
-			
-			
-			
-		
-			isOpertorClicked=true;
-				String newValue=display.getText();
-				String add1=oldValue;
-				String add2=newValue;
-				float add1F=Float.parseFloat(add1);
-				float add2F=Float.parseFloat(add2);
-			
-				float result=add1F+add2F;
-			
-				display.setText(result+"");//+"" to make a number to string
-			//so here the floar result is changed to string
-		
+			if(isOpertorClicked=true) {
+				if (isplus=true) {
+					String newValue=display.getText();
+					//	String add1=oldValue;
+						//String add2=newValue;
+						float add1F=Float.parseFloat(oldValue);
+						float add2F=Float.parseFloat(newValue);
+					
+						float result=add1F+add2F;
+					
+						display.setText(result+"");//+"" to make a number to string
+					//so here the floar result is changed to string
+				}else if (isminus=true) {
+						String newValue=display.getText();
+						//	String add1=oldValue;
+							//String add2=newValue;
+							float minus1F=Float.parseFloat(oldValue);
+							float minus2F=Float.parseFloat(newValue);
+						
+							float result=minus1F-minus2F;
+						
+							display.setText(result+"");//+"" to make a number to string
+						//so here the float result is changed to string
+					}
+				}
+			}
 			
 		}
-	}
 }
