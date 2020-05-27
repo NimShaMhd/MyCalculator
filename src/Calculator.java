@@ -22,15 +22,17 @@ public class Calculator implements ActionListener {
 	JLabel display;
 	JButton button1,button2,button3,button4,button5,button6,button7,button8,button9,button0;
 	JButton buttonplus,buttonminus,buttonequal,buttonmul,buttondiv,buttonpoint,buttonclear;
+	int operator;
 	
 	Calculator(){
 		jf=new JFrame("MyCalculator");
 		jf.setLayout(null);
-		jf.setSize(300,500);
+		jf.setBackground(Color.black);
+		jf.setSize(280,425);
 		//jf.setLocation(250, 25);
 		
 		display=new JLabel();
-		display.setBounds(10, 20, 250, 50);//FOR adjusting the display text area position
+		display.setBounds(10, 20, 230, 50);//FOR adjusting the display text area position
 		display.setBackground(Color.orange);
 		display.setOpaque(true);
 		display.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -267,7 +269,7 @@ public class Calculator implements ActionListener {
 		}
 		else if(e.getSource()==buttonplus) {
 			isOpertorClicked=true;
-			isplus=true;
+			operator=1;
 			oldValue=display.getText();	
 		}
 		
@@ -275,42 +277,52 @@ public class Calculator implements ActionListener {
 		
 		else if(e.getSource()==buttonminus) {
 			isOpertorClicked=true;
-			isminus=true;
+			operator=2;
 			oldValue=display.getText();
 		}else if(e.getSource()==buttonmul) {
 			isOpertorClicked=true;
-			ismultip=true;
+			operator=3;
 			oldValue=display.getText();
 		}else if(e.getSource()==buttondiv) {
 			isOpertorClicked=true;
-			isdivision=true;
+			operator=4;
 			oldValue=display.getText();
 			
 			
 		}else if(e.getSource()==buttonequal) {
 			if(isOpertorClicked=true) {
-				if (isplus=true) {
-					String newValue=display.getText();
-					//	String add1=oldValue;
-						//String add2=newValue;
-						float add1F=Float.parseFloat(oldValue);
-						float add2F=Float.parseFloat(newValue);
-					
-						float result=add1F+add2F;
-					
-						display.setText(result+"");//+"" to make a number to string
-					//so here the floar result is changed to string
-				}else if (isminus=true) {
-						String newValue=display.getText();
-						//	String add1=oldValue;
-							//String add2=newValue;
-							float minus1F=Float.parseFloat(oldValue);
-							float minus2F=Float.parseFloat(newValue);
-						
-							float result=minus1F-minus2F;
-						
-							display.setText(result+"");//+"" to make a number to string
-						//so here the float result is changed to string
+				switch(operator) {
+				case 1:
+					newValue=display.getText();
+					float add1F=Float.parseFloat(oldValue);
+					float add2F=Float.parseFloat(newValue);
+					float result=add1F+add2F;
+					display.setText(result+"");//+"" to make a number to string
+					//so here the float result is changed to string
+					break;
+				case 2:
+					newValue=display.getText();
+					float minus1F=Float.parseFloat(oldValue);
+					float minus2F=Float.parseFloat(newValue);
+					result=minus1F-minus2F;
+					display.setText(result+"");
+				case 3:
+					newValue=display.getText();
+					float mul1F=Float.parseFloat(oldValue);
+					float mul2F=Float.parseFloat(newValue);
+					result=mul1F*mul2F;
+					display.setText(result+"");
+					break;
+				case 4:
+					newValue=display.getText();
+					float div1F=Float.parseFloat(oldValue);
+					float div2F=Float.parseFloat(newValue);
+					result=div1F/div2F;
+					display.setText(result+"");
+					break;
+				default:
+					result=0;
+					break;
 					}
 				}
 			}
